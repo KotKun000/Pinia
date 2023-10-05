@@ -51,7 +51,7 @@ function addOrderListz() {
 
 <template>
   <div class="menu d-flex justify-content-between m-5">
-    <h3 class="mx-5">หวัดดี</h3>
+    <h3 class="mx-5">logo</h3>
 
     <div class="box-menu d-flex">
       <h3
