@@ -12,7 +12,6 @@ const shop_food = menu.menu;
 const cartStore = useCartStore();
 const Store = cartStore.cartList;
 
-// สร้างคำนวณราคาสินค้าทั้งหมด
 const totalPrice = computed(() => {
  
   return cartStore.cartList.reduce((total, item) => total + item.price, 0);
@@ -21,24 +20,23 @@ const totalPrice = computed(() => {
 function addCart(name, img, price) {
   Cart.value++;
 
-  // ตรวจสอบว่าสินค้ามีอยู่ในตระกร้าแล้วหรือไม่
   const existingItem = cartStore.cartList.find((item) => item.name === name);
 
   if (existingItem) {
     existingItem.quantity++;
     existingItem.price += price;
   } else {
-    // InCart.value.push({ name, img, price, quantity: 1 });
+    
     cartStore.addToCart({ name, img, price, quantity: 1 });
   }
 }
 function removeFromCart(item) {
-  Cart.value -= item.quantity; //ทำการ ลบตัวเลขสินค้าจากตระกร้า
-  totalPrice.value -= item.price; //ทำการลบ ราคารวม กับ ราคาสินค้าที่กดลบไป
+  Cart.value -= item.quantity; 
+  totalPrice.value -= item.price; 
 
-  const itemIndex = Store.findIndex((cartItem) => cartItem.name === item.name); //หาชื่อสินค้าที่มันซ้ำกัน
+  const itemIndex = Store.findIndex((cartItem) => cartItem.name === item.name); 
   if (itemIndex !== -1) {
-    const removedItem = Store.splice(itemIndex, 1)[0]; //ใช้ splice เพื่อลบออกจากอาร์เรย์ Store
+    const removedItem = Store.splice(itemIndex, 1)[0]; 
     cartStore.removeFromCart(removedItem);
   }
 }
@@ -51,15 +49,14 @@ function addOrderListz() {
 
 <template>
   <div class="menu d-flex justify-content-between m-5">
-    <h3 class="mx-5">maket</h3>
-
+    <h3 class="mx-5">Gundam info</h3>
     <div class="box-menu d-flex">
       <h3
         class="cart mx-2"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        Cart[{{ Cart }}]
+      🛒[{{ Cart }}]
       </h3>
       <h3
         class="cart mx-2"
@@ -89,7 +86,6 @@ function addOrderListz() {
     </div>
   </div>
 
-  <!-- Modal -->
   <div
     class="modal fade"
     id="exampleModal"
@@ -138,7 +134,6 @@ function addOrderListz() {
           </div>
         </div>
 
-        <!-- แสดงราคารวมทั้งหมด -->
         <div class="row g-0 m-2">
           <div class="col-md-12">
             <div class="card-body">
@@ -213,7 +208,7 @@ function addOrderListz() {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #575757;
+  background: linear-gradient(135deg, #610C9F, #940B92, #DA0C81, #E95793);
   color: white;
 }
 
@@ -253,9 +248,10 @@ function addOrderListz() {
 }
 
 .card {
+  
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(243, 23, 23, 0.644);
   transition: transform 0.2s;
 }
 
@@ -269,5 +265,11 @@ function addOrderListz() {
 
 .card-text {
   font-weight: bold;
+}
+.row{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 120px;
+
 }
 </style>

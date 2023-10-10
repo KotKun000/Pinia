@@ -4,17 +4,15 @@ import { defineStore } from 'pinia'
 export const menuStore = defineStore('menu', () => {
 
   const menu = ref([
-    { name: 'สินค้า1 ', img: '', price: 120 },
-    { name: ' สินค้า2 ', img: '', price: 80 },
-    { name: ' สินค้า3 ', img: '', price: 60 },
-    { name: 'สินค้า4 ', img: '', price: 40 },
-    { name: ' สินค้า5 ', img: '', price: 90 },
-
-
+    { name: 'Gundam Lfrith', img: 'src/components/image/1.png', price: 490 },
+    { name: 'Gundam Aerial', img: 'src/components/image/2.png', price: 650 },
+    { name: 'Gundam Aerial Rebuild', img: 'src/components/image/3.png', price: 680 },
+    { name: 'Gundam Caliban', img: 'src/components/image/4.png', price: 720 },
+    { name: 'Gundam Lfrith UR ', img: 'src/components/image/5.png', price: 590 },
+    { name: 'Gundam Thorn', img: 'src/components/image/6.png', price: 570 },
   ]);
   
-  
-  return { menu}
+  return { menu }
 })
 export const useCartStore = defineStore({
   id: 'cart',
@@ -27,7 +25,6 @@ export const useCartStore = defineStore({
       this.cartList.push(item);
     },
     addOrderList() {
-      // เพิ่มค่าลงไปใน orderList
       this.orderList.push(...this.cartList);
     
      this.cartList = [];
